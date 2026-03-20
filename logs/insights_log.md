@@ -103,3 +103,31 @@
 | 日期 | 原判断 | 触发修正的信号 | 新判断 |
 |------|--------|-------------|--------|
 | — | — | — | — |
+
+
+### 📈 趋势洞察 [2026-03-20] — Claude Code 工具生态将在 90 天内超越 Cursor 成为开发者首选 Agent 宿主
+
+> 来源: reflexion 追踪 | 置信: MEDIUM-HIGH | 追踪期数: 3 | 支撑信号: 6
+
+AutoAgent 应优先支持 Claude Code 作为 backend，而非通用 CLI
+
+
+### 📈 趋势洞察 [2026-03-20] — RAG/知识引擎赛道正在从「框架」转向「基础设施组件」，Cognee/OpenViking 代表新一代竞争者
+
+> 来源: reflexion 追踪 | 置信: HIGH | 追踪期数: 3 | 支撑信号: 28
+
+LightRAG 必须在 6 个月内推出托管 API 或 embeddable SDK，否则将被更轻量的方案替代
+
+
+### 📈 趋势洞察 [2026-03-20] — 金融 Agent 是当前开发者愿意真正付钱的 AI 工具之一，但 HKUDS 完全没有覆盖
+
+> 来源: reflexion 追踪 | 置信: MEDIUM | 追踪期数: 3 | 支撑信号: 30
+
+考虑用 AutoAgent + RAG-Anything 快速打包一个金融研报 Agent Demo，可能是快速获客的捷径
+
+
+### 📈 趋势洞察 [2026-03-20] — Unsloth + BitNet + MiniRAG 三者共振：2026 年底前，本地 SLM 推理将成为 enterprise 标准配置
+
+> 来源: reflexion 追踪 | 置信: MEDIUM | 追踪期数: 3 | 支撑信号: 8
+
+MiniRAG 应加快与 Unsloth（最流行的本地 training/inference UI）的集成，借势获取分发

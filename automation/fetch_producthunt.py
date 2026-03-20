@@ -2,8 +2,10 @@
 """
 fetch_producthunt.py
 ====================
-抓取 ProductHunt 每日/每周热门，聚焦 AI、开发者工具、生产力类目。
-无需 API Key（公开 GraphQL，限速约 100次/小时）。
+通过 ProductHunt 公开 RSS feed 抓取每日/每周热门产品。
+
+不需要 API Token — 使用官方 Atom Feed（50条/feed）。
+多 category feed 并行抓取，扩大覆盖范围。
 
 用法:
     python automation/fetch_producthunt.py
@@ -17,8 +19,10 @@ fetch_producthunt.py
 """
 
 import argparse
-import json
+import html
+import re
 import sys
+import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -32,212 +36,190 @@ ROOT = Path(__file__).parent.parent
 LOGS_DIR = ROOT / "logs"
 OUTPUT_FILE = LOGS_DIR / "producthunt_trends.md"
 
-PH_API = "https://api.producthunt.com/v2/api/graphql"
+ATOM_NS = "http://www.w3.org/2005/Atom"
 
-# 目标 topics (slug)
-TARGET_TOPICS = [
-    "artificial-intelligence",
-    "developer-tools",
-    "productivity",
-    "machine-learning",
-    "bots",
-    "open-source",
-    "generative-ai",
-    "llm",
-    "automation",
+# PH 公开 RSS feed — 按 category 分类，无需 token
+RSS_FEEDS = [
+    ("artificial-intelligence", "https://www.producthunt.com/feed?category=artificial-intelligence"),
+    ("developer-tools",         "https://www.producthunt.com/feed?category=developer-tools"),
+    ("productivity",            "https://www.producthunt.com/feed?category=productivity"),
+    ("machine-learning",        "https://www.producthunt.com/feed?category=machine-learning"),
+    ("open-source",             "https://www.producthunt.com/feed?category=open-source"),
+    ("bots",                    "https://www.producthunt.com/feed?category=bots"),
+    ("general",                 "https://www.producthunt.com/feed"),  # 全站 top50 兜底
 ]
 
-# GraphQL 查询：按 topic 获取热门产品
-QUERY = """
-query TopicPosts($topic: String!, $after: String) {
-  topic(slug: $topic) {
-    name
-    posts(order: VOTES, after: $after, first: 10) {
-      edges {
-        node {
-          id
-          name
-          tagline
-          description
-          votesCount
-          commentsCount
-          createdAt
-          url
-          website
-          topics {
-            edges {
-              node { name slug }
-            }
-          }
-          makers {
-            name
-          }
-        }
-      }
-    }
-  }
-}
-"""
+# 关注关键词 — 命中任一则优先展示
+FOCUS_KEYWORDS = [
+    "rag", "llm", "agent", "ai", "gpt", "claude", "knowledge graph",
+    "vector", "embedding", "local ai", "open source", "automation",
+    "copilot", "code", "mcp", "model context", "memory",
+]
 
 
-def fetch_topic_posts(topic_slug: str, token: str = "") -> list[dict]:
-    """获取某 topic 下的热门产品"""
-    headers = {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-    }
-    if token:
-        headers["Authorization"] = f"Bearer {token}"
+def strip_html(text: str) -> str:
+    """去除 HTML 标签，还原 HTML 实体"""
+    text = re.sub(r"<[^>]+>", " ", text)
+    return html.unescape(text).strip()
 
+
+def fetch_feed(category: str, url: str, timeout: int = 12) -> list[dict]:
+    """抓取单个 RSS feed，返回 entry 列表"""
     try:
-        resp = requests.post(
-            PH_API,
-            headers=headers,
-            json={"query": QUERY, "variables": {"topic": topic_slug}},
-            timeout=15,
-        )
-        data = resp.json()
-        topic_data = data.get("data", {}).get("topic")
-        if not topic_data:
-            return []
-        edges = topic_data.get("posts", {}).get("edges", [])
-        posts = []
-        for edge in edges:
-            node = edge["node"]
-            posts.append({
-                "id": node["id"],
-                "name": node["name"],
-                "tagline": node["tagline"],
-                "description": (node.get("description") or "")[:200],
-                "votes": node["votesCount"],
-                "comments": node["commentsCount"],
-                "created_at": node["createdAt"],
-                "url": node["url"],
-                "website": node.get("website", ""),
-                "topics": [
-                    e["node"]["name"]
-                    for e in node.get("topics", {}).get("edges", [])
-                ],
-            })
-        return posts
+        resp = requests.get(url, timeout=timeout, headers={"User-Agent": "hkuds-intelligence-bot/1.0"})
+        resp.raise_for_status()
     except Exception as e:
-        print(f"  ⚠️  {topic_slug} 获取失败: {e}")
+        print(f"  ⚠️  [{category}] 抓取失败: {e}")
         return []
 
-
-def is_recent(post: dict, days: int) -> bool:
-    """判断是否在最近 N 天内发布"""
     try:
-        created = datetime.fromisoformat(post["created_at"].replace("Z", "+00:00"))
+        root = ET.fromstring(resp.content)
+    except ET.ParseError as e:
+        print(f"  ⚠️  [{category}] XML 解析失败: {e}")
+        return []
+
+    ns = {"atom": ATOM_NS}
+    entries = []
+    for entry in root.findall("atom:entry", ns):
+        def txt(tag):
+            el = entry.find(f"atom:{ tag}", ns)
+            return (el.text or "").strip() if el is not None else ""
+
+        # link.href
+        link_el = entry.find("atom:link", ns)
+        link = link_el.get("href", "") if link_el is not None else txt("id")
+
+        # 从 content 提取 tagline（第一段 <p> 内容）
+        content_el = entry.find("atom:content", ns)
+        raw_content = content_el.text if content_el is not None else ""
+        p_match = re.search(r"<p[^>]*>(.*?)</p>", raw_content or "", re.DOTALL)
+        tagline = strip_html(p_match.group(1)) if p_match else strip_html(raw_content or "")
+
+        entries.append({
+            "id": txt("id"),
+            "title": txt("title"),
+            "tagline": tagline[:200],
+            "published": txt("published"),
+            "link": link,
+            "category": category,
+        })
+    return entries
+
+
+def is_recent(entry: dict, days: int) -> bool:
+    try:
+        dt = datetime.fromisoformat(entry["published"])
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
         cutoff = datetime.now(timezone.utc) - timedelta(days=days)
-        return created >= cutoff
+        return dt >= cutoff
     except Exception:
-        return True  # 解析失败时不过滤
+        return True  # 解析失败不过滤
 
 
-def deduplicate(posts: list[dict]) -> list[dict]:
-    seen = set()
+def is_focused(entry: dict) -> bool:
+    """是否命中关注关键词"""
+    text = (entry["title"] + " " + entry["tagline"]).lower()
+    return any(kw in text for kw in FOCUS_KEYWORDS)
+
+
+def deduplicate(entries: list[dict]) -> list[dict]:
+    seen_ids, seen_titles = set(), set()
     result = []
-    for p in posts:
-        if p["id"] not in seen:
-            seen.add(p["id"])
-            result.append(p)
+    for e in entries:
+        norm_title = e["title"].lower().strip()
+        if e["id"] not in seen_ids and norm_title not in seen_titles:
+            seen_ids.add(e["id"])
+            seen_titles.add(norm_title)
+            result.append(e)
     return result
 
 
-def generate_report(posts: list[dict], days: int) -> str:
+def generate_report(all_entries: list[dict], focused: list[dict], days: int) -> str:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     lines = [
-        f"# ProductHunt AI/Dev 趋势报告",
-        f"",
-        f"> 生成时间: {now} | 范围: 最近 {days} 天 | 类目: AI/开发工具/生产力",
-        f"",
+        "# ProductHunt AI/Dev 趋势报告",
+        "",
+        f"> 生成时间: {now} | 范围: 最近 {days} 天 | 来源: {len(RSS_FEEDS)} 个 category RSS feed",
+        f"> 总条目: {len(all_entries)} | 聚焦 AI/Dev 条目: {len(focused)}",
+        "",
     ]
 
-    if not posts:
-        lines += ["*本期无新产品发现*", ""]
+    if not all_entries:
+        lines += ["*本期无新产品发现（可能需要扩大天数范围）*", ""]
         return "\n".join(lines)
 
-    # Top 20 by votes
-    top_posts = sorted(posts, key=lambda x: x["votes"], reverse=True)[:20]
-
-    lines += [
-        f"## 🔥 热门产品 Top {len(top_posts)} (按票数排序)",
-        "",
-        "| 产品 | Tagline | 票数 | 评论 | Topics |",
-        "|------|---------|------|------|--------|",
-    ]
-    for p in top_posts:
-        topics_str = ", ".join(p["topics"][:3]) if p["topics"] else "-"
-        name_link = f"[{p['name']}]({p['url']})"
-        tagline = p["tagline"][:50] + "..." if len(p["tagline"]) > 50 else p["tagline"]
-        lines.append(
-            f"| {name_link} | {tagline} | ▲{p['votes']:,} | {p['comments']} | {topics_str} |"
-        )
-
-    lines += [
-        "",
-        "## 💡 值得关注的产品（摘要）",
-        "",
-    ]
-    for p in top_posts[:5]:
+    if focused:
         lines += [
-            f"### {p['name']}",
-            f"",
-            f"- **Tagline**: {p['tagline']}",
-            f"- **链接**: {p['url']}",
-            f"- **票数**: ▲{p['votes']:,} | 评论: {p['comments']}",
-        ]
-        if p["description"]:
-            lines.append(f"- **描述**: {p['description'][:150]}...")
-        lines += [
-            f"",
-            "**研究问题**:",
-            "- [ ] 这解决了什么问题？和 HKUDS 的哪个方向有交叉？",
-            "- [ ] 商业模型是什么？是否有启发？",
-            "- [ ] 技术栈如何？有没有开源部分？",
+            f"## 🎯 聚焦 AI/Dev/工具 产品 ({len(focused)} 条)",
             "",
+            "| 产品 | Tagline | 日期 | Category |",
+            "|------|---------|------|----------|",
         ]
+        for e in focused[:25]:
+            date_str = e["published"][:10]
+            name_link = f"[{e['title']}]({e['link']})"
+            tagline = e["tagline"][:60] + "..." if len(e["tagline"]) > 60 else e["tagline"]
+            lines.append(f"| {name_link} | {tagline} | {date_str} | {e['category']} |")
+        lines.append("")
 
+    if all_entries:
+        lines += [
+            f"## 📋 全部近期产品 ({len(all_entries)} 条)",
+            "",
+            "| 产品 | Tagline | 日期 |",
+            "|------|---------|------|",
+        ]
+        for e in all_entries[:30]:
+            date_str = e["published"][:10]
+            name_link = f"[{e['title']}]({e['link']})"
+            tagline = e["tagline"][:55] + "..." if len(e["tagline"]) > 55 else e["tagline"]
+            lines.append(f"| {name_link} | {tagline} | {date_str} |")
+        lines.append("")
+
+    # 为情报引擎格式化的精简信号
+    lines += [
+        "---",
+        "## 🔌 信号摘要（供情报引擎使用）",
+        "",
+    ]
+    for e in focused[:20]:
+        lines.append(f"- **{e['title']}** ({e['category']}): {e['tagline'][:120]}")
+        lines.append(f"  {e['link']}")
+    lines.append("")
     return "\n".join(lines)
 
 
 def main():
-    parser = argparse.ArgumentParser(description="抓取 ProductHunt 趋势")
-    parser.add_argument("--days", type=int, default=7)
-    parser.add_argument("--token", type=str, default="", help="PH API Token (可选)")
+    parser = argparse.ArgumentParser(description="抓取 ProductHunt AI/Dev 产品趋势（RSS）")
+    parser.add_argument("--days", type=int, default=30)
     args = parser.parse_args()
 
-    import os
-    token = args.token or os.environ.get("PH_TOKEN", "")
-
     LOGS_DIR.mkdir(exist_ok=True)
+    print(f"🔍 抓取 ProductHunt 最近 {args.days} 天产品 (RSS, 无需 token)...")
 
-    print(f"🔍 抓取 ProductHunt 最近 {args.days} 天的 AI/Dev 产品...")
-    if not token:
-        print("⚠️  未设置 PH_TOKEN，使用公开 API（有限速）")
-
-    all_posts = []
-    for topic in TARGET_TOPICS:
-        posts = fetch_topic_posts(topic, token)
-        recent = [p for p in posts if is_recent(p, args.days)]
+    all_entries: list[dict] = []
+    for cat, url in RSS_FEEDS:
+        entries = fetch_feed(cat, url)
+        recent = [e for e in entries if is_recent(e, args.days)]
         if recent:
-            print(f"  ✅ [{topic}] {len(recent)} 个近期产品")
-        all_posts.extend(recent)
+            print(f"  ✅ [{cat}] {len(recent)} 条近期产品")
+        all_entries.extend(recent)
 
-    all_posts = deduplicate(all_posts)
-    all_posts.sort(key=lambda x: x["votes"], reverse=True)
-    print(f"\n📦 去重后共 {len(all_posts)} 个产品")
+    all_entries = deduplicate(all_entries)
+    all_entries.sort(key=lambda x: x["published"], reverse=True)
+    focused = [e for e in all_entries if is_focused(e)]
 
-    report = generate_report(all_posts, args.days)
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        f.write(report)
+    print(f"\n📦 去重后共 {len(all_entries)} 条 | 聚焦 AI/Dev: {len(focused)} 条")
+
+    report = generate_report(all_entries, focused, args.days)
+    OUTPUT_FILE.write_text(report, encoding="utf-8")
     print(f"📝 报告已写入 {OUTPUT_FILE}")
 
-    if all_posts:
-        print("\n🔥 Top 5:")
-        for p in all_posts[:5]:
-            print(f"  ▲{p['votes']:,} {p['name']} — {p['tagline'][:60]}")
+    if focused:
+        print("\n🔥 Top 聚焦产品:")
+        for e in focused[:5]:
+            print(f"  • {e['title']} — {e['tagline'][:60]}")
 
 
 if __name__ == "__main__":
