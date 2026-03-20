@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LightRAG — Knowledge Graph RAG for Enterprise</title>
+  <meta name="description" content="LightRAG lets your enterprise knowledge base understand relationships between documents — not just find similar chunks. Graph-enhanced RAG, deployable in minutes." />
+  <style>
+    /* ── Reset & Variables ───────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:   #00d9ff;
+      --blue-dk:#0099cc;
+      --bg:     #0a0e1a;
+      --bg2:    #111827;
+      --bg3:    #1e2a3a;
+      --text:   #e2e8f0;
+      --muted:  #94a3b8;
+      --border: rgba(0, 217, 255, 0.15);
+      --radius: 12px;
+      --font:   'Inter', system-ui, -apple-system, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; }
+
+    /* ── Layout Helpers ─────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 80px 0; }
+    .section--alt { background: var(--bg2); }
+    .center { text-align: center; }
+    .badge {
+      display: inline-block; padding: 4px 12px; border-radius: 100px;
+      font-size: 12px; font-weight: 600; letter-spacing: .5px;
+      background: rgba(0,217,255,.12); color: var(--blue); border: 1px solid var(--border);
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.15; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; }
+    h3 { font-size: 1.2rem; font-weight: 600; }
+    p  { color: var(--muted); line-height: 1.75; }
+
+    /* ── Nav ────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,14,26,.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .nav-inner {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-size: 1.4rem; font-weight: 800; color: var(--blue); }
+    .logo span { color: var(--text); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: .95rem; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .btn {
+      display: inline-block; padding: 10px 24px; border-radius: 8px;
+      font-weight: 600; font-size: .95rem; cursor: pointer; transition: .2s;
+    }
+    .btn-primary {
+      background: var(--blue); color: #0a0e1a;
+    }
+    .btn-primary:hover { background: #33e4ff; text-decoration: none; }
+    .btn-outline {
+      border: 1px solid var(--border); color: var(--text); background: transparent;
+    }
+    .btn-outline:hover { border-color: var(--blue); text-decoration: none; }
+
+    /* ── Hero ───────────────────────────────────────── */
+    #hero {
+      padding: 100px 0 80px;
+      background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(0,217,255,.12) 0%, transparent 70%);
+    }
+    .hero-badge { margin-bottom: 24px; }
+    .hero-title { margin-bottom: 24px; }
+    .hero-title em { font-style: normal; color: var(--blue); }
+    .hero-sub { font-size: 1.2rem; max-width: 680px; margin: 0 auto 40px; }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 60px; }
+    .stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 24px; max-width: 700px; margin: 0 auto;
+    }
+    .stat-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px; text-align: center;
+    }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--blue); }
+    .stat-label { font-size: .85rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── Why ────────────────────────────────────────── */
+    .comparison {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px;
+    }
+    .cmp-card {
+      border-radius: var(--radius); padding: 28px;
+    }
+    .cmp-card--bad  { background: rgba(255,80,80,.06); border: 1px solid rgba(255,80,80,.25); }
+    .cmp-card--good { background: rgba(0,217,255,.06); border: 1px solid var(--border); }
+    .cmp-card h3 { margin-bottom: 16px; }
+    .cmp-card ul  { list-style: none; padding: 0; }
+    .cmp-card li  { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.05); color: var(--muted); font-size: .95rem; }
+    .cmp-card li::before { margin-right: 8px; }
+    .cmp-card--bad  li::before { content: "✗"; color: #ff5050; }
+    .cmp-card--good li::before { content: "✓"; color: var(--blue); }
+
+    /* ── How it works ───────────────────────────────── */
+    .steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .step-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+    }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(0,217,255,.15); color: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; margin-bottom: 16px;
+    }
+    .step-card h3 { margin-bottom: 8px; }
+
+    /* ── Use Cases ──────────────────────────────────── */
+    .use-cases {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .uc-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+    }
+    .uc-icon { font-size: 2.2rem; margin-bottom: 16px; }
+    .uc-card h3 { margin-bottom: 8px; }
+
+    /* ── Pricing ────────────────────────────────────── */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .plan {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px; position: relative;
+    }
+    .plan--featured {
+      border-color: var(--blue);
+      box-shadow: 0 0 40px rgba(0,217,255,.12);
+    }
+    .plan-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--blue); color: #0a0e1a;
+      padding: 3px 14px; border-radius: 100px; font-size: .8rem; font-weight: 700;
+    }
+    .plan-name { font-size: 1rem; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+    .plan-price { font-size: 2.4rem; font-weight: 800; margin-bottom: 4px; }
+    .plan-price span { font-size: 1rem; color: var(--muted); font-weight: 400; }
+    .plan-sub { font-size: .85rem; color: var(--muted); margin-bottom: 24px; }
+    .plan-features { list-style: none; margin-bottom: 28px; }
+    .plan-features li {
+      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.05);
+      font-size: .9rem; color: var(--muted);
+    }
+    .plan-features li::before { content: "✓ "; color: var(--blue); font-weight: 700; }
+
+    /* ── Code block ─────────────────────────────────── */
+    .code-demo {
+      background: #0d1117; border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px; margin-top: 48px;
+      overflow-x: auto;
+    }
+    .code-demo pre { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: .88rem; line-height: 1.7; }
+    .c-kw  { color: #ff79c6; }
+    .c-fn  { color: #50fa7b; }
+    .c-str { color: #f1fa8c; }
+    .c-cm  { color: #6272a4; }
+    .c-var { color: #8be9fd; }
+
+    /* ── Testimonials ───────────────────────────────── */
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .testi-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+    }
+    .testi-text { font-style: italic; margin-bottom: 20px; color: var(--text); }
+    .testi-author { font-size: .85rem; color: var(--muted); }
+    .testi-author strong { color: var(--text); }
+
+    /* ── CTA Banner ─────────────────────────────────── */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(0,217,255,.08) 0%, rgba(0,153,204,.04) 100%);
+      border: 1px solid var(--border); border-radius: 20px;
+      padding: 64px 40px; text-align: center; margin: 80px 0;
+    }
+    .cta-banner h2 { margin-bottom: 16px; }
+    .cta-banner p  { margin-bottom: 32px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .cta-banner .btn-primary { font-size: 1.05rem; padding: 14px 36px; }
+
+    /* ── Footer ─────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0; color: var(--muted); font-size: .9rem;
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { color: var(--muted); }
+    .footer-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── Responsive ─────────────────────────────────── */
+    @media (max-width: 640px) {
+      .comparison { grid-template-columns: 1fr; }
+      .nav-links  { display: none; }
+      .hero-ctas  { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════ -->
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">Light<span>RAG</span></div>
+    <ul class="nav-links">
+      <li><a href="#why">Why LightRAG</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#use-cases">Use cases</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="https://github.com/HKUDS/LightRAG" target="_blank">GitHub</a></li>
+    </ul>
+    <a href="#pricing" class="btn btn-primary">Get started free</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="container center">
+    <div class="hero-badge">
+      <span class="badge">✨ Now with WebUI + Docker + Kubernetes support</span>
+    </div>
+    <h1 class="hero-title">
+      Your knowledge base<br/>
+      should understand <em>relationships</em>,<br/>
+      not just similarity.
+    </h1>
+    <p class="hero-sub">
+      LightRAG builds a knowledge graph from your documents — then queries
+      the graph <em>and</em> vectors simultaneously. Get answers that reason
+      across thousands of interconnected documents, not just similar chunks.
+    </p>
+    <div class="hero-ctas">
+      <a href="#pricing" class="btn btn-primary">Start free — no credit card</a>
+      <a href="https://github.com/HKUDS/LightRAG" class="btn btn-outline" target="_blank">
+        ★ Star on GitHub
+      </a>
+    </div>
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-num">25K+</div>
+        <div class="stat-label">GitHub Stars</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">1K+</div>
+        <div class="stat-label">PRs Merged</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">10K+</div>
+        <div class="stat-label">Monthly Deployments</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3×</div>
+        <div class="stat-label">More Accurate than Naive RAG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     WHY
+════════════════════════════════════════════ -->
+<section id="why" class="section section--alt">
+  <div class="container">
+    <div class="center" style="margin-bottom: 8px;">
+      <span class="badge">The Problem</span>
+    </div>
+    <h2 class="center" style="margin-top:16px; margin-bottom: 8px;">
+      Traditional RAG breaks when documents are interconnected
+    </h2>
+    <p class="center" style="max-width: 640px; margin: 0 auto;">
+      Vector similarity finds <em>what sounds similar</em>. It can't find
+      <em>why Document A and Document C are related</em> — or trace reasoning
+      across 50 connected clauses in a legal contract.
+    </p>
+    <div class="comparison">
+      <div class="cmp-card cmp-card--bad">
+        <h3 style="color:#ff7070">❌ Traditional RAG</h3>
+        <ul>
+          <li>Treats every document as isolated chunks</li>
+          <li>Finds similar text — misses relationships</li>
+          <li>Loses context when answers span multiple documents</li>
+          <li>No global understanding of your corpus</li>
+          <li>Answers degrade as knowledge base grows</li>
+        </ul>
+      </div>
+      <div class="cmp-card cmp-card--good">
+        <h3 style="color:var(--blue)">✅ LightRAG</h3>
+        <ul>
+          <li>Builds entity-relationship graph from your documents</li>
+          <li>Dual-mode: Local (precise) + Global (holistic) queries</li>
+          <li>Traces multi-hop reasoning across your entire corpus</li>
+          <li>Understands <em>why</em> documents are related</li>
+          <li>Gets smarter as your knowledge base grows</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════ -->
+<section id="how" class="section">
+  <div class="container">
+    <div class="center" style="margin-bottom: 8px;">
+      <span class="badge">How it works</span>
+    </div>
+    <h2 class="center" style="margin-top:16px; margin-bottom: 8px;">
+      Up and running in 3 steps
+    </h2>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Index your documents</h3>
+        <p>Drop in PDFs, Word docs, Markdown, or plain text. LightRAG extracts entities and relationships and builds a knowledge graph — automatically.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Choose your query mode</h3>
+        <p><strong style="color:var(--blue)">Local</strong> — precise answers from specific entities.<br/>
+        <strong style="color:var(--blue)">Global</strong> — holistic understanding across the entire corpus.<br/>
+        <strong style="color:var(--blue)">Hybrid</strong> — combines both for maximum accuracy.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Get relationship-aware answers</h3>
+        <p>LightRAG retrieves from both the KG and vector store simultaneously, fusing graph reasoning with semantic similarity for answers your users can trust.</p>
+      </div>
+    </div>
+
+    <!-- Code snippet -->
+    <div class="code-demo">
+      <pre><span class="c-cm"># Install</span>
+pip install <span class="c-str">"lightrag-hku[api]"</span>
+
+<span class="c-cm"># Python API — 5 lines to production-grade RAG</span>
+<span class="c-kw">from</span> lightrag <span class="c-kw">import</span> <span class="c-var">LightRAG</span>, <span class="c-var">QueryParam</span>
+
+<span class="c-var">rag</span> = <span class="c-fn">LightRAG</span>(working_dir=<span class="c-str">"./knowledge_base"</span>)
+
+<span class="c-kw">await</span> rag.<span class="c-fn">ainsert</span>(your_documents)  <span class="c-cm"># index once</span>
+
+answer = <span class="c-kw">await</span> rag.<span class="c-fn">aquery</span>(
+    <span class="c-str">"What are all the obligations triggered by clause 12.3?"</span>,
+    param=<span class="c-fn">QueryParam</span>(mode=<span class="c-str">"hybrid"</span>)
+)</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     USE CASES
+════════════════════════════════════════════ -->
+<section id="use-cases" class="section section--alt">
+  <div class="container">
+    <div class="center" style="margin-bottom: 8px;">
+      <span class="badge">Use Cases</span>
+    </div>
+    <h2 class="center" style="margin-top:16px; margin-bottom: 8px;">
+      Built for knowledge-intensive industries
+    </h2>
+    <div class="use-cases">
+      <div class="uc-card">
+        <div class="uc-icon">⚖️</div>
+        <h3>Legal</h3>
+        <p>Trace cross-references across contracts, cases, and precedents. Find all clauses triggered by a single obligation in seconds.</p>
+      </div>
+      <div class="uc-card">
+        <div class="uc-icon">📈</div>
+        <h3>Financial Research</h3>
+        <p>Connect signals across 10-Ks, earnings transcripts, and news. Understand how risk factors in one filing relate to another.</p>
+      </div>
+      <div class="uc-card">
+        <div class="uc-icon">🧬</div>
+        <h3>Life Sciences</h3>
+        <p>Map relationships between clinical trials, patents, and internal research reports. Accelerate literature review by 10×.</p>
+      </div>
+      <div class="uc-card">
+        <div class="uc-icon">💼</div>
+        <h3>Consulting & Advisory</h3>
+        <p>Surface relevant past projects, methodologies, and client insights from years of accumulated knowledge — instantly.</p>
+      </div>
+      <div class="uc-card">
+        <div class="uc-icon">🎓</div>
+        <h3>Academic Research</h3>
+        <p>Navigate hundreds of papers to find citation chains, contradictions, and research gaps across your reading library.</p>
+      </div>
+      <div class="uc-card">
+        <div class="uc-icon">🏢</div>
+        <h3>Enterprise IT</h3>
+        <p>Replace static wikis and intranet search with a living knowledge graph that understands your org's processes and systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     PRICING
+════════════════════════════════════════════ -->
+<section id="pricing" class="section">
+  <div class="container">
+    <div class="center" style="margin-bottom: 8px;">
+      <span class="badge">Pricing</span>
+    </div>
+    <h2 class="center" style="margin-top:16px; margin-bottom: 8px;">
+      Start free. Scale when you're ready.
+    </h2>
+    <p class="center" style="max-width: 560px; margin: 0 auto 0;">
+      All plans include access to the graph-enhanced RAG core. No vendor lock-in — export your knowledge graph anytime.
+    </p>
+    <div class="pricing-grid">
+      <!-- Free -->
+      <div class="plan">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">$0</div>
+        <div class="plan-sub">Forever free</div>
+        <ul class="plan-features">
+          <li>5,000 documents / month</li>
+          <li>500 queries / month</li>
+          <li>Knowledge graph visualization</li>
+          <li>Local + Global query modes</li>
+          <li>Community support</li>
+        </ul>
+        <a href="#" class="btn btn-outline" style="width:100%; text-align:center; display:block;">
+          Get started free
+        </a>
+      </div>
+      <!-- Pro -->
+      <div class="plan plan--featured">
+        <div class="plan-badge">Most Popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$99 <span>/ month</span></div>
+        <div class="plan-sub">Per workspace</div>
+        <ul class="plan-features">
+          <li>50,000 documents / month</li>
+          <li>5,000 queries / month</li>
+          <li>All Free features</li>
+          <li>Source citation &amp; attribution</li>
+          <li>REST API access</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#" class="btn btn-primary" style="width:100%; text-align:center; display:block;">
+          Start Pro trial
+        </a>
+      </div>
+      <!-- Team -->
+      <div class="plan">
+        <div class="plan-name">Team</div>
+        <div class="plan-price">$499 <span>/ month</span></div>
+        <div class="plan-sub">Up to 10 seats</div>
+        <ul class="plan-features">
+          <li>500,000 documents / month</li>
+          <li>50,000 queries / month</li>
+          <li>All Pro features</li>
+          <li>Multi-user access &amp; roles</li>
+          <li>SSO / SAML</li>
+          <li>Priority support + SLA</li>
+        </ul>
+        <a href="#" class="btn btn-outline" style="width:100%; text-align:center; display:block;">
+          Start Team trial
+        </a>
+      </div>
+      <!-- Enterprise -->
+      <div class="plan" style="grid-column: 1 / -1; background: rgba(0,217,255,.04);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;">
+          <div>
+            <div class="plan-name">Enterprise</div>
+            <div class="plan-price" style="font-size:1.8rem;">Custom pricing</div>
+            <p style="margin-top: 8px; max-width: 560px;">
+              Unlimited documents · Private deployment (on-prem / VPC) · Custom SLA ·
+              Dedicated solutions engineer · HIPAA / SOC 2 compliance available
+            </p>
+          </div>
+          <a href="mailto:contact@lightrag.io" class="btn btn-primary" style="white-space:nowrap;">
+            Talk to sales →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════════ -->
+<section class="section section--alt">
+  <div class="container">
+    <h2 class="center" style="margin-bottom: 8px;">What teams are saying</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="testi-text">
+          "We tried three RAG frameworks before LightRAG. It's the only one that actually understands
+          clause dependencies in our contracts. The Global query mode is magic."
+        </p>
+        <div class="testi-author">
+          <strong>Sarah Chen</strong> — CTO, Meridian Legal Tech
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-text">
+          "LightRAG handles our research corpus of 40,000 papers in a way no vector-only system could.
+          The knowledge graph makes cross-paper reasoning finally possible."
+        </p>
+        <div class="testi-author">
+          <strong>Dr. Marcus Waller</strong> — Director of R&amp;D, BioSignal Labs
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-text">
+          "The self-hosted Docker deployment took 20 minutes. We now have a fully air-gapped knowledge
+          base for our compliance team. Genuinely impressive."
+        </p>
+        <div class="testi-author">
+          <strong>Thomas Park</strong> — Engineering Lead, Apex Capital
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     CTA BANNER
+════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner">
+      <h2>Ready to give your knowledge base a brain?</h2>
+      <p>
+        Join thousands of teams using LightRAG to unlock the relationships
+        hidden in their documents. Start free, no credit card required.
+      </p>
+      <a href="#pricing" class="btn btn-primary">Get started for free →</a>
+      <div style="margin-top: 20px;">
+        <a href="https://github.com/HKUDS/LightRAG" style="color:var(--muted); font-size:.9rem;" target="_blank">
+          Or self-host for free on GitHub ★ 25K+
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer>
+  <div class="container footer-inner">
+    <div class="logo" style="font-size:1.1rem;">Light<span>RAG</span></div>
+    <ul class="footer-links">
+      <li><a href="https://github.com/HKUDS/LightRAG" target="_blank">GitHub</a></li>
+      <li><a href="#">Docs</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="mailto:contact@lightrag.io">Contact</a></li>
+    </ul>
+    <span>© 2025 HKUDS · MIT License</span>
+  </div>
+</footer>
+
+</body>
+</html>

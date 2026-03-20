@@ -1,0 +1,48 @@
+name: 每周研究自动化
+
+on:
+  schedule:
+    # 每周一早上 8:00 UTC (北京时间 16:00)
+    - cron: '0 8 * * 1'
+  workflow_dispatch:  # 允许手动触发
+
+permissions:
+  contents: write
+
+jobs:
+  weekly-research:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 配置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: 安装依赖
+        run: pip install requests feedparser
+
+      - name: 抓取 GitHub 统计
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python automation/fetch_github_stats.py
+
+      - name: 监控 arXiv 新论文
+        run: python automation/arxiv_monitor.py --days 7
+
+      - name: 生成周报摘要
+        run: python automation/generate_digest.py
+
+      - name: 提交更新到仓库
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add logs/
+          # 只在有变化时提交
+          git diff --staged --quiet || git commit -m "chore: 自动更新周报 $(date '+%Y-%m-%d')"
+          git push

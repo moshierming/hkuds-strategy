@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+.env
+
+# macOS
+.DS_Store
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Logs (自动生成的，不追踪原始数据，只追踪日志文档)
+logs/github_stats.json
+logs/stats_changes.md
+logs/arxiv_papers.md
