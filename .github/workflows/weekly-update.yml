@@ -25,9 +25,10 @@ jobs:
           cache: 'pip'
 
       - name: 安装依赖
-        run: pip install requests feedparser
+        run: pip install requests feedparser beautifulsoup4
 
-      - name: 抓取 GitHub 统计
+      # ── HKUDS 核心监控 ────────────────────────────────
+      - name: 抓取 HKUDS GitHub 统计
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python automation/fetch_github_stats.py
@@ -35,7 +36,23 @@ jobs:
       - name: 监控 arXiv 新论文
         run: python automation/arxiv_monitor.py --days 7
 
-      - name: 生成周报摘要
+      # ── 多源信号采集 ───────────────────────────────────
+      - name: 监控 HackerNews
+        run: python automation/fetch_hackernews.py --days 7
+
+      - name: 监控 GitHub Trending
+        run: python automation/fetch_github_trending.py
+
+      - name: 抓取 ProductHunt 趋势
+        env:
+          PH_TOKEN: ${{ secrets.PH_TOKEN }}
+        run: python automation/fetch_producthunt.py
+
+      # ── 聚合与综合报告 ─────────────────────────────────
+      - name: 聚合全渠道信号
+        run: python automation/aggregate_signals.py
+
+      - name: 生成 HKUDS 周报摘要
         run: python automation/generate_digest.py
 
       - name: 提交更新到仓库
