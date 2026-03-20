@@ -1,0 +1,1468 @@
+{
+  "HGCL": {
+    "name": "HGCL",
+    "stars": 127,
+    "forks": 16,
+    "watchers": 127,
+    "open_issues": 7,
+    "language": "Python",
+    "updated_at": "2026-03-20T07:48:41Z",
+    "created_at": "2022-12-26T15:38:15Z",
+    "description": "[WSDM'2023] \"HGCL: Heterogeneous Graph Contrastive Learning for Recommendation\"",
+    "topics": [
+      "collaborative-filtering",
+      "graph-contrastive-learning",
+      "graph-neural-networks",
+      "heterogeneous-graph-learning",
+      "recommendation",
+      "self-supervised-learning"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245580+00:00"
+  },
+  "MMSSL": {
+    "name": "MMSSL",
+    "stars": 225,
+    "forks": 24,
+    "watchers": 225,
+    "open_issues": 8,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:58:10Z",
+    "created_at": "2023-02-08T11:42:25Z",
+    "description": "[WWW'2023] \"MMSSL: Multi-Modal Self-Supervised Learning for Recommendation\"",
+    "topics": [
+      "graph-neural-netowrks",
+      "multi-modal-recommendation",
+      "multimedia-recommendation",
+      "self-supervised-learning"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245598+00:00"
+  },
+  "LightGCL": {
+    "name": "LightGCL",
+    "stars": 200,
+    "forks": 23,
+    "watchers": 200,
+    "open_issues": 6,
+    "language": "Python",
+    "updated_at": "2026-03-20T07:46:50Z",
+    "created_at": "2023-02-08T11:43:52Z",
+    "description": "[ICLR'2023] \"LightGCL: Simple Yet Effective Graph Contrastive Learning for Recommendation\"",
+    "topics": [
+      "collaborative-filtering",
+      "graph-contrastive-learning",
+      "graph-neural-networks",
+      "recommendation",
+      "self-supervised-learning"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245601+00:00"
+  },
+  "DCRec": {
+    "name": "DCRec",
+    "stars": 64,
+    "forks": 8,
+    "watchers": 64,
+    "open_issues": 2,
+    "language": "Python",
+    "updated_at": "2026-03-12T07:22:14Z",
+    "created_at": "2023-02-08T12:27:51Z",
+    "description": "[WWW'2023] \"DCRec: Debiased Contrastive Learning for Sequential Recommendation\"",
+    "topics": [
+      "contrastive-learning",
+      "graph-neural-networks",
+      "self-supervised-learning",
+      "sequential-recommendation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245616+00:00"
+  },
+  "SSLRec": {
+    "name": "SSLRec",
+    "stars": 557,
+    "forks": 77,
+    "watchers": 557,
+    "open_issues": 9,
+    "language": "Python",
+    "updated_at": "2026-03-18T11:35:41Z",
+    "created_at": "2023-02-08T16:36:21Z",
+    "description": "[WSDM'2024 Oral] \"SSLRec: A Self-Supervised Learning Framework for Recommendation\"",
+    "topics": [
+      "collaborative-filtering",
+      "contrastive-learning",
+      "deep-learning",
+      "graph-neural-networks",
+      "recommendation-algorithms",
+      "recommender-systems",
+      "self-supervised-learning",
+      "user-behavior"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245619+00:00"
+  },
+  "AutoST": {
+    "name": "AutoST",
+    "stars": 69,
+    "forks": 9,
+    "watchers": 69,
+    "open_issues": 0,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:59:31Z",
+    "created_at": "2023-02-09T15:49:03Z",
+    "description": "[WWW'2023] \"AutoST: Automated Spatio-Temporal Graph Contrastive Learning\"",
+    "topics": [
+      "contrastive-learning",
+      "graph-neural-networks",
+      "intelligent-transportation-systems",
+      "self-supervised-learning",
+      "spatio-temporal-data-mining",
+      "urban-computing"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245621+00:00"
+  },
+  "AutoCF": {
+    "name": "AutoCF",
+    "stars": 51,
+    "forks": 7,
+    "watchers": 51,
+    "open_issues": 1,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:59:15Z",
+    "created_at": "2023-02-14T08:08:20Z",
+    "description": "[WWW'23] \"AutoCF: Automated Self-Supervised Learning for Recommendation\"",
+    "topics": [
+      "automated-machine-learning",
+      "collaborative-filtering",
+      "recommender-systems",
+      "self-supervised-learning"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245624+00:00"
+  },
+  "SimRec": {
+    "name": "SimRec",
+    "stars": 33,
+    "forks": 6,
+    "watchers": 33,
+    "open_issues": 3,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:59:49Z",
+    "created_at": "2023-02-14T08:33:46Z",
+    "description": "[WWW'23] \"SimRec: Graph-less Collaborative Filtering\"",
+    "topics": [
+      "collaborative-filtering",
+      "graph-neural-networks",
+      "knowledge-distillation",
+      "recommender-systems",
+      "self-supervised-learning"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245626+00:00"
+  },
+  "DGNN": {
+    "name": "DGNN",
+    "stars": 25,
+    "forks": 1,
+    "watchers": 25,
+    "open_issues": 1,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:59:53Z",
+    "created_at": "2023-03-11T13:07:28Z",
+    "description": "[ICDE'23] \"DGNN: Disentangled Graph Social Recommendation\"",
+    "topics": [
+      "collaborative-filtering",
+      "disentangled-representations",
+      "graph-neural-networks",
+      "heterogeneous-graph",
+      "social-recommendation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245628+00:00"
+  },
+  "DCCF": {
+    "name": "DCCF",
+    "stars": 64,
+    "forks": 6,
+    "watchers": 64,
+    "open_issues": 1,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:59:07Z",
+    "created_at": "2023-04-23T15:44:30Z",
+    "description": "[SIGIR'2023] \"DCCF: Disentangled Contrastive Collaborative Filtering\"",
+    "topics": [
+      "collaborative-filtering",
+      "contrastive-learning",
+      "disentangled-representations",
+      "graph-neural-networks",
+      "recommender-system",
+      "self-supervised-learning"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245631+00:00"
+  },
+  "GFormer": {
+    "name": "GFormer",
+    "stars": 73,
+    "forks": 15,
+    "watchers": 73,
+    "open_issues": 0,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:58:32Z",
+    "created_at": "2023-04-30T02:12:26Z",
+    "description": "[SIGIR'2023] \"GFormer: Graph Transformer for Recommendation\"",
+    "topics": [
+      "collaborative-filtering",
+      "graph-neural-networks",
+      "graph-representation-learning",
+      "graph-transformer",
+      "recommender-systems"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245633+00:00"
+  },
+  "MAERec": {
+    "name": "MAERec",
+    "stars": 67,
+    "forks": 7,
+    "watchers": 67,
+    "open_issues": 2,
+    "language": "Python",
+    "updated_at": "2026-03-18T15:38:49Z",
+    "created_at": "2023-05-08T07:52:55Z",
+    "description": "[SIGIR'2023] \"MAERec: Graph Masked Autoencoder for Sequential Recommendation\"",
+    "topics": [
+      "graph-neural-networks",
+      "masked-autoencoder",
+      "recommender-systems",
+      "self-supervised-learning",
+      "sequential-recommendation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245636+00:00"
+  },
+  "DSL": {
+    "name": "DSL",
+    "stars": 33,
+    "forks": 4,
+    "watchers": 33,
+    "open_issues": 0,
+    "language": "Python",
+    "updated_at": "2026-03-14T07:41:51Z",
+    "created_at": "2023-05-19T06:27:14Z",
+    "description": "[IJCAI'2023] \"DSL: Denoised Self-Augmented Learning for Social Recommendation\"",
+    "topics": [
+      "data-augmentation",
+      "graph-neural-networks",
+      "recommender-systems",
+      "self-supervised-learning",
+      "social-recommendation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245638+00:00"
+  },
+  "GraphST": {
+    "name": "GraphST",
+    "stars": 58,
+    "forks": 3,
+    "watchers": 58,
+    "open_issues": 3,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:56:59Z",
+    "created_at": "2023-05-25T06:43:11Z",
+    "description": "[ICML'2023] \"GraphST: Spatial-Temporal Graph Learning with Adversarial Contrastive Adaptation\"",
+    "topics": [
+      "contrastive-learning",
+      "graph-neural-networks",
+      "graph-representation-learning",
+      "spatio-temporal-prediction",
+      "urban-computing"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245640+00:00"
+  },
+  "KGRec": {
+    "name": "KGRec",
+    "stars": 84,
+    "forks": 6,
+    "watchers": 84,
+    "open_issues": 4,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:58:41Z",
+    "created_at": "2023-06-02T09:17:01Z",
+    "description": "[KDD'2023] \"KGRec: Knowledge Graph Self-Supervised Rationalization for Recommendation\"",
+    "topics": [
+      "graph-neural-networks",
+      "invariant-learning",
+      "knowledge-graph",
+      "rationalization",
+      "recommender-systems",
+      "self-supervised-learning"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245642+00:00"
+  },
+  "AdaGCL": {
+    "name": "AdaGCL",
+    "stars": 70,
+    "forks": 8,
+    "watchers": 70,
+    "open_issues": 0,
+    "language": "Python",
+    "updated_at": "2026-01-23T15:59:16Z",
+    "created_at": "2023-06-19T10:44:28Z",
+    "description": "[KDD'2023] \"AdaGCL: Adaptive Graph Contrastive Learning for Recommendation\"",
+    "topics": [
+      "contrastive-learning",
+      "data-augmentation",
+      "graph-auto-encoder",
+      "graph-neural-networks",
+      "recommender-systems"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245644+00:00"
+  },
+  "GTE": {
+    "name": "GTE",
+    "stars": 22,
+    "forks": 0,
+    "watchers": 22,
+    "open_issues": 0,
+    "language": "Python",
+    "updated_at": "2026-03-17T13:29:13Z",
+    "created_at": "2023-08-07T06:36:03Z",
+    "description": "[CIKM'2023] \"GTE: How Expressive are Graph Neural Networks for Recommendation?\"",
+    "topics": [
+      "collaborative-filtering",
+      "graph-neural-networks",
+      "recommender-systems"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245646+00:00"
+  },
+  "RCL": {
+    "name": "RCL",
+    "stars": 16,
+    "forks": 1,
+    "watchers": 16,
+    "open_issues": 3,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:59:18Z",
+    "created_at": "2023-09-03T07:03:29Z",
+    "description": "[Recsys'2023] \"RCL: Multi-Relational Contrastive Learning for Recommendation\"",
+    "topics": [
+      "collaborative-filtering",
+      "contrastive-learning",
+      "heterogeneous-graph",
+      "multi-relational",
+      "recommender-systems"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245648+00:00"
+  },
+  "CL4ST": {
+    "name": "CL4ST",
+    "stars": 25,
+    "forks": 1,
+    "watchers": 25,
+    "open_issues": 1,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:58:24Z",
+    "created_at": "2023-09-13T09:10:14Z",
+    "description": "[CIKM'2023] \"CL4ST: Spatio-Temporal Meta Contrastive Learning\"",
+    "topics": [
+      "contrastive-learning",
+      "meta-learning",
+      "spatio-temporal-data",
+      "spatio-temporal-prediction",
+      "traffic-prediction",
+      "urban-computing"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245650+00:00"
+  },
+  "STExplainer": {
+    "name": "STExplainer",
+    "stars": 61,
+    "forks": 7,
+    "watchers": 61,
+    "open_issues": 5,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:58:19Z",
+    "created_at": "2023-09-13T09:11:21Z",
+    "description": "[CIKM'2023] \"STExplainer: Explainable Spatio-Temporal Graph Neural Networks\"",
+    "topics": [
+      "explainable-ai",
+      "explainable-machine-learning",
+      "graph-neural-networks",
+      "spatio-temporal-data",
+      "traffic-prediction"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245652+00:00"
+  },
+  "GraphGPT": {
+    "name": "GraphGPT",
+    "stars": 823,
+    "forks": 80,
+    "watchers": 823,
+    "open_issues": 28,
+    "language": "Python",
+    "updated_at": "2026-03-20T00:58:06Z",
+    "created_at": "2023-10-15T05:13:24Z",
+    "description": "[SIGIR'2024] \"GraphGPT: Graph Instruction Tuning for Large Language Models\"",
+    "topics": [
+      "graph-learning",
+      "graph-neural-networks",
+      "instruction-tuning",
+      "large-language-models",
+      "text-graph"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245654+00:00"
+  },
+  "LLMRec": {
+    "name": "LLMRec",
+    "stars": 515,
+    "forks": 64,
+    "watchers": 515,
+    "open_issues": 16,
+    "language": "Python",
+    "updated_at": "2026-03-19T22:40:42Z",
+    "created_at": "2023-10-23T01:56:37Z",
+    "description": "[WSDM'2024 Oral] \"LLMRec: Large Language Models with Graph Augmentation for Recommendation\"",
+    "topics": [
+      "colloborative-filtering",
+      "content-based-recommendation",
+      "data-augmentation-strategies",
+      "graph-augmentation",
+      "graph-learning",
+      "multi-modal-recommendation",
+      "recommendation-system",
+      "recommendation-with-side-information"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245656+00:00"
+  },
+  "RLMRec": {
+    "name": "RLMRec",
+    "stars": 451,
+    "forks": 57,
+    "watchers": 451,
+    "open_issues": 8,
+    "language": "Python",
+    "updated_at": "2026-03-18T16:28:34Z",
+    "created_at": "2023-10-23T07:18:57Z",
+    "description": "[WWW'2024] \"RLMRec: Representation Learning with Large Language Models for Recommendation\"",
+    "topics": [
+      "collaborative-filtering",
+      "graph-neural-networks",
+      "large-language-models",
+      "recommendation",
+      "recommender-systems"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245790+00:00"
+  },
+  "GPT-ST": {
+    "name": "GPT-ST",
+    "stars": 89,
+    "forks": 9,
+    "watchers": 89,
+    "open_issues": 1,
+    "language": "Python",
+    "updated_at": "2026-03-10T22:26:17Z",
+    "created_at": "2023-11-07T12:47:26Z",
+    "description": "[NeurIPS'2023] \"GPT-ST: Generative Pre-Training of Spatio-Temporal Graph Neural Networks\"",
+    "topics": [
+      "generative-model",
+      "graph-neural-networks",
+      "pre-trained-model",
+      "spatio-temporal-prediction",
+      "urban-computing"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245793+00:00"
+  },
+  "DiffKG": {
+    "name": "DiffKG",
+    "stars": 134,
+    "forks": 14,
+    "watchers": 134,
+    "open_issues": 1,
+    "language": "Python",
+    "updated_at": "2026-03-17T07:54:37Z",
+    "created_at": "2023-11-24T15:06:59Z",
+    "description": "[WSDM'2024 Oral] \"DiffKG: Knowledge Graph Diffusion Model for Recommendation\"",
+    "topics": [
+      "collaborative-filtering",
+      "diffusion-models",
+      "graph-neural-networks",
+      "knowledge-graph",
+      "recommendation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245796+00:00"
+  },
+  "GraphPro": {
+    "name": "GraphPro",
+    "stars": 76,
+    "forks": 3,
+    "watchers": 76,
+    "open_issues": 0,
+    "language": "Python",
+    "updated_at": "2026-03-14T11:21:37Z",
+    "created_at": "2023-11-30T09:49:06Z",
+    "description": "[WWW'2024] \"GraphPro: Graph Pre-training and Prompt Learning for Recommendation\"",
+    "topics": [
+      "collaborative-filtering",
+      "graph-neural-networks",
+      "graph-pretraining",
+      "prompt-learning",
+      "recommendation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245798+00:00"
+  },
+  "HiGPT": {
+    "name": "HiGPT",
+    "stars": 147,
+    "forks": 8,
+    "watchers": 147,
+    "open_issues": 8,
+    "language": "Python",
+    "updated_at": "2026-03-17T17:45:05Z",
+    "created_at": "2024-02-18T13:27:51Z",
+    "description": "[KDD'2024] \"HiGPT: Heterogenous Graph Language Models\"",
+    "topics": [
+      "fundation-models",
+      "graph-learning",
+      "graph-model",
+      "graph-neural-networks",
+      "instruction-tuning",
+      "large-language-models",
+      "pre-trained-model"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245800+00:00"
+  },
+  "UrbanGPT": {
+    "name": "UrbanGPT",
+    "stars": 431,
+    "forks": 47,
+    "watchers": 431,
+    "open_issues": 12,
+    "language": "Python",
+    "updated_at": "2026-03-19T06:37:52Z",
+    "created_at": "2024-02-21T02:24:49Z",
+    "description": "[KDD'2024] \"UrbanGPT: Spatio-Temporal Large Language Models\"",
+    "topics": [
+      "fundation-models",
+      "instruction-tuning",
+      "large-language-models",
+      "pre-trained-model",
+      "smart-cities",
+      "spatio-temporal-prediction",
+      "urban-computing",
+      "urban-data-science"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245802+00:00"
+  },
+  "GraphEdit": {
+    "name": "GraphEdit",
+    "stars": 143,
+    "forks": 15,
+    "watchers": 143,
+    "open_issues": 3,
+    "language": "Python",
+    "updated_at": "2026-03-07T12:29:02Z",
+    "created_at": "2024-02-21T05:05:09Z",
+    "description": "\"GraphEdit: Large Language Models for Graph Structure Learning\"",
+    "topics": [
+      "graph-learning",
+      "graph-neural-networks",
+      "graph-structure-learning",
+      "instruction-tuning",
+      "large-language-models"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245804+00:00"
+  },
+  "OpenGraph": {
+    "name": "OpenGraph",
+    "stars": 330,
+    "forks": 36,
+    "watchers": 330,
+    "open_issues": 2,
+    "language": "Python",
+    "updated_at": "2026-03-10T15:17:36Z",
+    "created_at": "2024-02-21T05:11:26Z",
+    "description": "[EMNLP'2024] \"OpenGraph: Towards Open Graph Foundation Models\"",
+    "topics": [
+      "data-augmentation",
+      "fundation-models",
+      "graph-algorithms",
+      "graph-fundation-models",
+      "graph-generation",
+      "graph-learning",
+      "graph-neural-networks",
+      "large-langage-models",
+      "large-language-models",
+      "transformer"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245806+00:00"
+  },
+  "PromptMM": {
+    "name": "PromptMM",
+    "stars": 54,
+    "forks": 2,
+    "watchers": 54,
+    "open_issues": 1,
+    "language": "Python",
+    "updated_at": "2026-03-13T03:50:38Z",
+    "created_at": "2024-02-26T10:53:37Z",
+    "description": "[WWW'2024] \"PromptMM: Multi-Modal Knowledge Distillation for Recommendation with Prompt-Tuning\"",
+    "topics": [
+      "collaborative-filtering",
+      "knowledge-distillation",
+      "multi-modal-recommendation",
+      "multimedia-recommendation",
+      "prompt-tuning",
+      "recommender-system"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245808+00:00"
+  },
+  "GraphAug": {
+    "name": "GraphAug",
+    "stars": 24,
+    "forks": 2,
+    "watchers": 24,
+    "open_issues": 1,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:57:30Z",
+    "created_at": "2024-03-11T02:35:14Z",
+    "description": "[ICDE'2024] \"GraphAug: Graph Augmentation for Recommendation\"",
+    "topics": [
+      "collaborative-filtering",
+      "contrastive-learning",
+      "graph-augmentation",
+      "graph-learning",
+      "graph-neural-networks",
+      "recommender-system",
+      "self-supervised-learning"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245811+00:00"
+  },
+  "HKUDS": {
+    "name": "HKUDS",
+    "stars": 32,
+    "forks": 3,
+    "watchers": 32,
+    "open_issues": 0,
+    "language": null,
+    "updated_at": "2026-03-16T07:47:55Z",
+    "created_at": "2024-03-12T10:47:00Z",
+    "description": "",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245813+00:00"
+  },
+  "Awesome-SSLRec-Papers": {
+    "name": "Awesome-SSLRec-Papers",
+    "stars": 124,
+    "forks": 7,
+    "watchers": 124,
+    "open_issues": 0,
+    "language": null,
+    "updated_at": "2026-03-01T01:57:41Z",
+    "created_at": "2024-04-02T11:52:44Z",
+    "description": "[ACM CSUR] \"A Comprehensive Survey of Self-Supervised Learning for Recommendation\"",
+    "topics": [
+      "contrastive-learning",
+      "graph-neural-networks",
+      "recommendation",
+      "recommender-systems",
+      "self-supervised-learning"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245815+00:00"
+  },
+  "SelfGNN": {
+    "name": "SelfGNN",
+    "stars": 71,
+    "forks": 9,
+    "watchers": 71,
+    "open_issues": 2,
+    "language": "Jupyter Notebook",
+    "updated_at": "2026-03-18T15:23:34Z",
+    "created_at": "2024-04-24T11:37:46Z",
+    "description": "[SIGIR'2024] \"SelfGNN: Self-Supervised Graph Neural Networks for Sequential Recommendation\"",
+    "topics": [
+      "data-augmentation",
+      "graph-neural-networks",
+      "recommender-system",
+      "self-supervised-learning",
+      "sequential-recommendation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245817+00:00"
+  },
+  "Awesome-LLM4Graph-Papers": {
+    "name": "Awesome-LLM4Graph-Papers",
+    "stars": 369,
+    "forks": 17,
+    "watchers": 369,
+    "open_issues": 2,
+    "language": null,
+    "updated_at": "2026-03-17T15:13:35Z",
+    "created_at": "2024-05-11T03:32:51Z",
+    "description": "[KDD'2024] \"LLM4Graph: A Survey of Large Language Models for Graphs\"",
+    "topics": [
+      "fundation-models",
+      "graph-algorithms",
+      "graph-fundation-models",
+      "graph-neural-networks",
+      "graph-representation-learning",
+      "large-language-models"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245819+00:00"
+  },
+  "FlashST": {
+    "name": "FlashST",
+    "stars": 95,
+    "forks": 5,
+    "watchers": 95,
+    "open_issues": 8,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:57:33Z",
+    "created_at": "2024-05-23T02:34:57Z",
+    "description": "[ICML'2024] \"FlashST: A Simple and Universal Prompt-Tuning Framework for Traffic Prediction\"",
+    "topics": [
+      "pre-training",
+      "prompt-tuning",
+      "smart-cities",
+      "spatio-temporal-prediction",
+      "traffic-flow-prediction",
+      "urban-computing"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245822+00:00"
+  },
+  "RecDiff": {
+    "name": "RecDiff",
+    "stars": 89,
+    "forks": 6,
+    "watchers": 89,
+    "open_issues": 2,
+    "language": "Python",
+    "updated_at": "2026-03-01T08:12:55Z",
+    "created_at": "2024-05-29T02:44:16Z",
+    "description": "[CIKM'2024] \"RecDiff: Diffusion Model for Social Recommendation\"",
+    "topics": [
+      "denoising-diffusion",
+      "diffusion-models",
+      "graph-neural-networks",
+      "recommender-systems",
+      "social-recommendation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245824+00:00"
+  },
+  "XRec": {
+    "name": "XRec",
+    "stars": 170,
+    "forks": 29,
+    "watchers": 170,
+    "open_issues": 6,
+    "language": "Python",
+    "updated_at": "2026-03-06T03:19:18Z",
+    "created_at": "2024-06-02T13:37:42Z",
+    "description": "[EMNLP'2024] \"XRec: Large Language Models for Explainable Recommendation\"",
+    "topics": [
+      "explainable-ai",
+      "large-language-models",
+      "recommender-systems"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245826+00:00"
+  },
+  "DiffMM": {
+    "name": "DiffMM",
+    "stars": 99,
+    "forks": 5,
+    "watchers": 99,
+    "open_issues": 0,
+    "language": "Python",
+    "updated_at": "2026-03-18T08:48:50Z",
+    "created_at": "2024-06-17T04:39:25Z",
+    "description": "[ACM MM'2024]\"DiffMM: Multi-Modal Diffusion Model for Recommendation\"",
+    "topics": [
+      "diffusion-models",
+      "generative-diffusion-model",
+      "graph-neural-networks",
+      "multi-modal-recommendation",
+      "multimedia-recommendation",
+      "recommender-systems",
+      "self-supervised-learning"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245828+00:00"
+  },
+  "EasyST": {
+    "name": "EasyST",
+    "stars": 21,
+    "forks": 2,
+    "watchers": 21,
+    "open_issues": 2,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:57:26Z",
+    "created_at": "2024-07-17T05:54:30Z",
+    "description": "[CIKM'2024] \"EasyST: A Simple Framework for Spatio-Temporal Prediction\"",
+    "topics": [
+      "knowledge-distillation",
+      "spatio-temporal-prediction",
+      "traffic-prediction",
+      "urban-computing"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245830+00:00"
+  },
+  "OpenCity": {
+    "name": "OpenCity",
+    "stars": 146,
+    "forks": 23,
+    "watchers": 146,
+    "open_issues": 9,
+    "language": "Python",
+    "updated_at": "2026-03-14T11:55:39Z",
+    "created_at": "2024-08-12T02:41:52Z",
+    "description": "\"OpenCity: Open Spatio-Temporal Foundation Models for Traffic Prediction\"",
+    "topics": [
+      "fundation-models",
+      "large-models",
+      "smart-cities",
+      "spatio-temporal-prediction",
+      "urban-computing"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245832+00:00"
+  },
+  "AnyGraph": {
+    "name": "AnyGraph",
+    "stars": 224,
+    "forks": 22,
+    "watchers": 224,
+    "open_issues": 7,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:57:21Z",
+    "created_at": "2024-08-12T02:46:15Z",
+    "description": "\"AnyGraph: Graph Foundation Model in the Wild\"",
+    "topics": [
+      "graph-fundation-models",
+      "graph-learning",
+      "graph-model",
+      "graph-neural-networks",
+      "large-models"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245835+00:00"
+  },
+  "EasyRec": {
+    "name": "EasyRec",
+    "stars": 140,
+    "forks": 16,
+    "watchers": 140,
+    "open_issues": 4,
+    "language": "Python",
+    "updated_at": "2026-03-16T10:14:26Z",
+    "created_at": "2024-08-18T12:35:01Z",
+    "description": "[EMNLP'2025] \"EasyRec: Simple yet Effective Language Model for Recommendation\"",
+    "topics": [
+      "collaborative-filtering",
+      "language-model",
+      "large-language-models",
+      "recommendation",
+      "recommender-systems"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245837+00:00"
+  },
+  "LightRAG": {
+    "name": "LightRAG",
+    "stars": 29642,
+    "forks": 4249,
+    "watchers": 29642,
+    "open_issues": 186,
+    "language": "Python",
+    "updated_at": "2026-03-20T10:09:30Z",
+    "created_at": "2024-10-02T11:57:54Z",
+    "description": "[EMNLP2025] \"LightRAG: Simple and Fast Retrieval-Augmented Generation\"",
+    "topics": [
+      "genai",
+      "gpt",
+      "gpt-4",
+      "graphrag",
+      "knowledge-graph",
+      "large-language-models",
+      "llm",
+      "rag",
+      "retrieval-augmented-generation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245839+00:00"
+  },
+  "SepLLM": {
+    "name": "SepLLM",
+    "stars": 567,
+    "forks": 46,
+    "watchers": 567,
+    "open_issues": 2,
+    "language": "Python",
+    "updated_at": "2026-03-12T05:58:19Z",
+    "created_at": "2024-12-11T15:16:27Z",
+    "description": "[ICML 2025] \"SepLLM: Accelerate Large Language Models by Compressing One Segment into One Separator\"",
+    "topics": [
+      "inference-speed",
+      "large-language-models",
+      "llms"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245842+00:00"
+  },
+  "MixRec": {
+    "name": "MixRec",
+    "stars": 20,
+    "forks": 1,
+    "watchers": 20,
+    "open_issues": 1,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:57:03Z",
+    "created_at": "2024-12-18T07:20:17Z",
+    "description": "[WSDM'2025] \"MixRec: Heterogeneous Graph Collaborative Filtering\"",
+    "topics": [
+      "collaborative-filtering",
+      "graph-neural-networks",
+      "heterogeneous-graph",
+      "recommendation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245844+00:00"
+  },
+  "GraphAgent": {
+    "name": "GraphAgent",
+    "stars": 358,
+    "forks": 52,
+    "watchers": 358,
+    "open_issues": 7,
+    "language": "Jupyter Notebook",
+    "updated_at": "2026-03-19T06:59:45Z",
+    "created_at": "2024-12-18T12:02:10Z",
+    "description": "[EMNLP2025] \"GraphAgent: Agentic Graph Language Assistant\"",
+    "topics": [
+      "agent",
+      "graph-data",
+      "language-assistant",
+      "large-language-models"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245846+00:00"
+  },
+  "DiffGraph": {
+    "name": "DiffGraph",
+    "stars": 69,
+    "forks": 9,
+    "watchers": 69,
+    "open_issues": 3,
+    "language": "Python",
+    "updated_at": "2026-03-18T03:45:52Z",
+    "created_at": "2024-12-19T02:45:20Z",
+    "description": "[WSDM'2025] \"DiffGraph: Heterogeneous Graph Diffusion Model\"",
+    "topics": [
+      "diffusion-model",
+      "graph-learning",
+      "heterogeneous-graph"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245848+00:00"
+  },
+  "LightGNN": {
+    "name": "LightGNN",
+    "stars": 58,
+    "forks": 8,
+    "watchers": 58,
+    "open_issues": 0,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:56:57Z",
+    "created_at": "2024-12-19T02:52:44Z",
+    "description": "[WSDM'25] \"LightGNN: Simple Graph Neural Network for Recommendation\"",
+    "topics": [
+      "graph-learning",
+      "graph-neural-networks",
+      "knowledge-distillation",
+      "model-compression",
+      "recommendation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245850+00:00"
+  },
+  "RecLM": {
+    "name": "RecLM",
+    "stars": 110,
+    "forks": 13,
+    "watchers": 110,
+    "open_issues": 0,
+    "language": "Python",
+    "updated_at": "2026-03-13T10:12:52Z",
+    "created_at": "2024-12-24T14:57:19Z",
+    "description": "[ACL2025] \"RecLM: Recommendation Instruction Tuning\"",
+    "topics": [
+      "collaborative-filtering",
+      "instruction-tuning",
+      "large-language-models",
+      "recommendation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245852+00:00"
+  },
+  "MiniRAG": {
+    "name": "MiniRAG",
+    "stars": 1792,
+    "forks": 235,
+    "watchers": 1792,
+    "open_issues": 35,
+    "language": "Python",
+    "updated_at": "2026-03-20T02:17:47Z",
+    "created_at": "2025-01-11T13:24:14Z",
+    "description": "\"MiniRAG: Making RAG Simpler with Small and Open-Sourced Language Models\"",
+    "topics": [
+      "large-language-models",
+      "rag",
+      "retrieval-augmented-generation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245855+00:00"
+  },
+  "VideoRAG": {
+    "name": "VideoRAG",
+    "stars": 2800,
+    "forks": 394,
+    "watchers": 2800,
+    "open_issues": 16,
+    "language": "Python",
+    "updated_at": "2026-03-20T06:10:42Z",
+    "created_at": "2025-02-03T03:59:11Z",
+    "description": "[KDD'2026] \"VideoRAG: Chat with Your Videos\"",
+    "topics": [
+      "large-language-models",
+      "llms",
+      "long-video-understanding",
+      "multi-modal-llms",
+      "rag",
+      "retrieval-augmented-generation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245857+00:00"
+  },
+  "AutoAgent": {
+    "name": "AutoAgent",
+    "stars": 8678,
+    "forks": 1221,
+    "watchers": 8678,
+    "open_issues": 57,
+    "language": "Python",
+    "updated_at": "2026-03-20T08:15:36Z",
+    "created_at": "2025-02-06T12:47:15Z",
+    "description": "\"AutoAgent: Fully-Automated and Zero-Code LLM Agent Framework\"",
+    "topics": [
+      "agent",
+      "llms"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245859+00:00"
+  },
+  "Auto-Deep-Research": {
+    "name": "Auto-Deep-Research",
+    "stars": 1438,
+    "forks": 202,
+    "watchers": 1438,
+    "open_issues": 32,
+    "language": "Python",
+    "updated_at": "2026-03-20T06:25:53Z",
+    "created_at": "2025-02-16T05:28:50Z",
+    "description": "\"Your Fully-Automated Personal AI Assistant\"",
+    "topics": [
+      "agent",
+      "deep-research",
+      "llm"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245861+00:00"
+  },
+  "AI-Researcher": {
+    "name": "AI-Researcher",
+    "stars": 4875,
+    "forks": 595,
+    "watchers": 4875,
+    "open_issues": 60,
+    "language": "Python",
+    "updated_at": "2026-03-20T09:26:27Z",
+    "created_at": "2025-03-11T12:48:38Z",
+    "description": "[NeurIPS2025] \"AI-Researcher: Autonomous Scientific Innovation\" -- A production-ready version: https://novix.science/cha",
+    "topics": [
+      "ai-researcher"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245863+00:00"
+  },
+  "ViMax": {
+    "name": "ViMax",
+    "stars": 2484,
+    "forks": 450,
+    "watchers": 2484,
+    "open_issues": 26,
+    "language": "Python",
+    "updated_at": "2026-03-20T03:40:35Z",
+    "created_at": "2025-03-30T13:36:35Z",
+    "description": "\"ViMax: Agentic Video Generation (Director, Screenwriter, Producer, and Video Generator All-in-One)\"",
+    "topics": [
+      "agentic-aigc",
+      "video-generation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245866+00:00"
+  },
+  "Awesome-LLM4Urban-Papers": {
+    "name": "Awesome-LLM4Urban-Papers",
+    "stars": 46,
+    "forks": 1,
+    "watchers": 46,
+    "open_issues": 0,
+    "language": null,
+    "updated_at": "2026-03-10T11:47:53Z",
+    "created_at": "2025-04-04T07:02:53Z",
+    "description": "[ACM TIST] \"LLM4Urban: Urban Computing in the Era of Large Language Models\"",
+    "topics": [
+      "intelligent-transportation-systems",
+      "llm",
+      "spatio-temporal-data",
+      "urban-computing"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245868+00:00"
+  },
+  ".github": {
+    "name": ".github",
+    "stars": 5,
+    "forks": 1,
+    "watchers": 5,
+    "open_issues": 0,
+    "language": null,
+    "updated_at": "2026-03-19T04:01:03Z",
+    "created_at": "2025-04-09T02:06:43Z",
+    "description": "",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245870+00:00"
+  },
+  "UnlearnRec": {
+    "name": "UnlearnRec",
+    "stars": 4,
+    "forks": 0,
+    "watchers": 4,
+    "open_issues": 1,
+    "language": "Roff",
+    "updated_at": "2026-03-15T11:45:07Z",
+    "created_at": "2025-04-29T15:48:24Z",
+    "description": "",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245872+00:00"
+  },
+  "DeepCode": {
+    "name": "DeepCode",
+    "stars": 14956,
+    "forks": 2018,
+    "watchers": 14956,
+    "open_issues": 35,
+    "language": "Python",
+    "updated_at": "2026-03-20T09:18:09Z",
+    "created_at": "2025-05-14T05:23:02Z",
+    "description": "\"DeepCode: Open Agentic Coding (Paper2Code & Text2Web & Text2Backend)\"",
+    "topics": [
+      "agentic-coding",
+      "llm-agent"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245874+00:00"
+  },
+  "RecGPT": {
+    "name": "RecGPT",
+    "stars": 52,
+    "forks": 7,
+    "watchers": 52,
+    "open_issues": 0,
+    "language": "Python",
+    "updated_at": "2026-03-17T19:28:10Z",
+    "created_at": "2025-06-03T09:13:03Z",
+    "description": "[EMNLP2025] \"RecGPT: A Foundation Model for Sequential Recommendation\"",
+    "topics": [
+      "fundation-models",
+      "recgpt",
+      "sequential-recommendation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245876+00:00"
+  },
+  "RAG-Anything": {
+    "name": "RAG-Anything",
+    "stars": 14446,
+    "forks": 1735,
+    "watchers": 14446,
+    "open_issues": 109,
+    "language": "Python",
+    "updated_at": "2026-03-20T08:57:12Z",
+    "created_at": "2025-06-06T06:47:29Z",
+    "description": "\"RAG-Anything: All-in-One RAG Framework\"",
+    "topics": [
+      "multi-modal-rag",
+      "retrieval-augmented-generation"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245878+00:00"
+  },
+  "AI-Researcher-Gallery": {
+    "name": "AI-Researcher-Gallery",
+    "stars": 6,
+    "forks": 0,
+    "watchers": 6,
+    "open_issues": 0,
+    "language": null,
+    "updated_at": "2026-03-01T01:56:30Z",
+    "created_at": "2025-06-06T07:02:44Z",
+    "description": "",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245881+00:00"
+  },
+  "VideoAgent": {
+    "name": "VideoAgent",
+    "stars": 527,
+    "forks": 75,
+    "watchers": 527,
+    "open_issues": 8,
+    "language": "Python",
+    "updated_at": "2026-03-20T05:36:01Z",
+    "created_at": "2025-07-16T11:35:25Z",
+    "description": "\"VideoAgent: All-in-One Agentic Framework for Video Understanding, Editing, and Remaking\"",
+    "topics": [
+      "agents",
+      "audio-editing",
+      "audio-understanding",
+      "llm-agents",
+      "notebooklm",
+      "podcast",
+      "video-editing",
+      "video-understanding"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245883+00:00"
+  },
+  "LightReasoner": {
+    "name": "LightReasoner",
+    "stars": 593,
+    "forks": 31,
+    "watchers": 593,
+    "open_issues": 1,
+    "language": "Python",
+    "updated_at": "2026-03-18T17:43:00Z",
+    "created_at": "2025-09-29T03:17:24Z",
+    "description": "\"LightReasoner: Can Small Language Models Teach Large Language Models Reasoning?\"",
+    "topics": [
+      "large-language-models",
+      "post-training",
+      "reasoning-models",
+      "token-efficiency"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245885+00:00"
+  },
+  "DeepResearch-Eval": {
+    "name": "DeepResearch-Eval",
+    "stars": 38,
+    "forks": 7,
+    "watchers": 38,
+    "open_issues": 1,
+    "language": "Python",
+    "updated_at": "2026-03-01T01:55:48Z",
+    "created_at": "2025-10-09T02:38:06Z",
+    "description": "\"DeepResearch-Eval: An End-to-End Evaluation Framework for DeepResearch Systems\"",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245887+00:00"
+  },
+  "OpenPhone": {
+    "name": "OpenPhone",
+    "stars": 741,
+    "forks": 143,
+    "watchers": 741,
+    "open_issues": 1,
+    "language": "Python",
+    "updated_at": "2026-03-19T15:36:41Z",
+    "created_at": "2025-10-19T15:42:33Z",
+    "description": "\"OpenPhone: Mobile Agentic Foundation Models for AI Phone\"",
+    "topics": [
+      "ai-phone",
+      "mobile-agents",
+      "phone-agent"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245889+00:00"
+  },
+  "AI-Trader": {
+    "name": "AI-Trader",
+    "stars": 11841,
+    "forks": 1987,
+    "watchers": 11841,
+    "open_issues": 33,
+    "language": "Python",
+    "updated_at": "2026-03-20T09:32:53Z",
+    "created_at": "2025-10-23T12:45:00Z",
+    "description": "\"AI-Trader: Can AI Beat the Market?\"  Live Trading Bench: https://ai4trade.ai Tech Report Link: https://arxiv.org/abs/25",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245891+00:00"
+  },
+  "FastAgent": {
+    "name": "FastAgent",
+    "stars": 53,
+    "forks": 11,
+    "watchers": 53,
+    "open_issues": 0,
+    "language": "Python",
+    "updated_at": "2026-03-10T20:20:35Z",
+    "created_at": "2025-11-17T03:01:50Z",
+    "description": "\"FastAgent: Simple, Fast, and Strong LLM Agents\"",
+    "topics": [
+      "agent-orchestration",
+      "agents",
+      "computer-use-agent",
+      "mcp",
+      "tool-use"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245893+00:00"
+  },
+  "Paper2Slides": {
+    "name": "Paper2Slides",
+    "stars": 3199,
+    "forks": 422,
+    "watchers": 3199,
+    "open_issues": 18,
+    "language": "Python",
+    "updated_at": "2026-03-20T09:08:09Z",
+    "created_at": "2025-12-07T06:15:43Z",
+    "description": "\"Paper2Slides: From Paper to Presentation in One Click\"",
+    "topics": [
+      "agentic-ai",
+      "llm-agents",
+      "paper2poster",
+      "paper2slides"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245895+00:00"
+  },
+  "AnyTool": {
+    "name": "AnyTool",
+    "stars": 606,
+    "forks": 78,
+    "watchers": 606,
+    "open_issues": 3,
+    "language": "Python",
+    "updated_at": "2026-03-20T01:32:07Z",
+    "created_at": "2025-12-09T18:18:08Z",
+    "description": "\"AnyTool: Universal Tool-Use Layer for AI Agents\"",
+    "topics": [
+      "ai-agents",
+      "computer-use-agents",
+      "mcp",
+      "tool-orchestration",
+      "tool-use"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245897+00:00"
+  },
+  "DeepTutor": {
+    "name": "DeepTutor",
+    "stars": 10781,
+    "forks": 1448,
+    "watchers": 10781,
+    "open_issues": 34,
+    "language": "Python",
+    "updated_at": "2026-03-20T09:24:07Z",
+    "created_at": "2025-12-28T15:35:54Z",
+    "description": "\"DeepTutor: AI-Powered Personalized Learning Assistant\"",
+    "topics": [
+      "ai-agents",
+      "ai-tutor",
+      "deepresearch",
+      "idea-generation",
+      "interactive-learning",
+      "knowledge-graph",
+      "large-language-models",
+      "multi-agent-systems",
+      "rag"
+    ],
+    "fetched_at": "2026-03-20T10:28:33.245900+00:00"
+  },
+  "FutureShow": {
+    "name": "FutureShow",
+    "stars": 127,
+    "forks": 12,
+    "watchers": 127,
+    "open_issues": 1,
+    "language": "Python",
+    "updated_at": "2026-03-17T14:13:24Z",
+    "created_at": "2026-01-25T05:38:39Z",
+    "description": "\"FutureShow: Can AI Predict the Future? Live Real-World Forecasting\"",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245902+00:00"
+  },
+  "nanobot": {
+    "name": "nanobot",
+    "stars": 35068,
+    "forks": 5911,
+    "watchers": 35068,
+    "open_issues": 740,
+    "language": "Python",
+    "updated_at": "2026-03-20T10:25:19Z",
+    "created_at": "2026-02-01T07:16:15Z",
+    "description": "\"🐈 nanobot: The Ultra-Lightweight OpenClaw\"",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245904+00:00"
+  },
+  "Litewrite": {
+    "name": "Litewrite",
+    "stars": 131,
+    "forks": 15,
+    "watchers": 131,
+    "open_issues": 1,
+    "language": "TypeScript",
+    "updated_at": "2026-03-19T03:40:12Z",
+    "created_at": "2026-02-02T12:17:05Z",
+    "description": "\"Litewrite: Vibe Writing is Coming - Write Faster and Better! https://litewrite.ai\"",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245906+00:00"
+  },
+  "MoChat": {
+    "name": "MoChat",
+    "stars": 211,
+    "forks": 41,
+    "watchers": 211,
+    "open_issues": 0,
+    "language": "TypeScript",
+    "updated_at": "2026-03-19T03:11:09Z",
+    "created_at": "2026-02-10T04:08:03Z",
+    "description": "\"MoChat: OpenClaw as Your Social Agent https://mochat.io\"",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245908+00:00"
+  },
+  "FastCode": {
+    "name": "FastCode",
+    "stars": 2014,
+    "forks": 234,
+    "watchers": 2014,
+    "open_issues": 8,
+    "language": "Python",
+    "updated_at": "2026-03-20T08:43:13Z",
+    "created_at": "2026-02-13T06:43:54Z",
+    "description": "\"FastCode: Accelerating and Streamlining Your Code Understanding\"",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245909+00:00"
+  },
+  "ClawWork": {
+    "name": "ClawWork",
+    "stars": 7427,
+    "forks": 949,
+    "watchers": 7427,
+    "open_issues": 25,
+    "language": "Python",
+    "updated_at": "2026-03-20T10:19:02Z",
+    "created_at": "2026-02-15T16:41:38Z",
+    "description": "\"ClawWork: OpenClaw as Your AI Coworker - 💰 $15K earned in 11 Hours\"",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245912+00:00"
+  },
+  "DeepInnovator": {
+    "name": "DeepInnovator",
+    "stars": 203,
+    "forks": 45,
+    "watchers": 203,
+    "open_issues": 0,
+    "language": "Python",
+    "updated_at": "2026-03-19T11:30:11Z",
+    "created_at": "2026-02-27T16:18:02Z",
+    "description": "\"DeepInnovator: AI Research Assistant - Idea Spark & Scientific Discovery\"",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245914+00:00"
+  },
+  "CLI-Anything": {
+    "name": "CLI-Anything",
+    "stars": 19705,
+    "forks": 1707,
+    "watchers": 19705,
+    "open_issues": 55,
+    "language": "Python",
+    "updated_at": "2026-03-20T10:25:02Z",
+    "created_at": "2026-03-08T13:52:57Z",
+    "description": "CLI-Anything: Making ALL Software Agent-Native",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245916+00:00"
+  },
+  "ClawTeam": {
+    "name": "ClawTeam",
+    "stars": 1840,
+    "forks": 223,
+    "watchers": 1840,
+    "open_issues": 6,
+    "language": "Python",
+    "updated_at": "2026-03-20T10:27:52Z",
+    "created_at": "2026-03-17T14:42:46Z",
+    "description": "ClawTeam: Agent Swarm Intelligence (One Command → Full Automation)",
+    "topics": [],
+    "fetched_at": "2026-03-20T10:28:33.245918+00:00"
+  }
+}
